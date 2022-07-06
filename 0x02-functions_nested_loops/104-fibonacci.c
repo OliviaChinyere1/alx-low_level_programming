@@ -1,7 +1,6 @@
 #include <stdio.h>
 
 /**
- *
  * main - print the first 98 fibonacci numbers.
  * Return: Nothing.
  */
@@ -38,7 +37,7 @@ printf("%lu%lu", k, p);
 else
 printf("%lu0%lu", k, p);
 if (count != 98)
-printf(", ");
+printf(",");
 count++;
 }
 putchar('\n');
