@@ -26,8 +26,8 @@ j = j / 1000;
 while (count <= 98)
 {
 carry = (m + n) / 1000;
-p = (m + n) - carry * 1000;
-k = (i + j) + carry;
+p = (m + n)-carry * 1000;
+k = (i + j)+carry;
 m = n;
 n = p;
 i = j;
@@ -37,7 +37,7 @@ printf("%lu%lu", k, p);
 else
 printf("%lu0%lu", k, p);
 if (count != 98)
-printf(",");
+printf(", ");
 count++;
 }
 putchar('\n');
