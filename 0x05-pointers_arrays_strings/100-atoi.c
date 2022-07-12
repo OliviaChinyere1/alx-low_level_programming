@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * _atoi - Convert string to an integer
@@ -26,5 +27,5 @@ temp++;
 } while (*temp >= '0' && *temp <= '9');
 }
 
-return (num *sign);
+return (num * sign);
 }
