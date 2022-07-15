@@ -12,9 +12,10 @@
  *Prints the byte if it is printable; if not, prints '.' .
  *Each line ends with a new line '\n' .
  *If the inputted byte size is 0 or less, the function only prints a new line.
- *@b: number of bytes
+ *@b: The buffer to be printed.
  *@size: size of the byte
  */
+
 void print_buffer(char *b, int size)
 {
 int i = 0, j;
@@ -45,7 +46,7 @@ printf("%c", b[j]);
 else
 printf(".");
 }
-printf(‘\n’);
+printf('\n');
 i += 10;
 }
 }
