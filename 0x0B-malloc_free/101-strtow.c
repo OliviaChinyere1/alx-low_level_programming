@@ -3,61 +3,51 @@
 #include <stdlib.h>
 
 /**
- * strtow - concatenates all the arguments of your program
- *@str: string
- *@av: arguments
- * Return: a pointer to a new string
+ * strtow - split a string into words
+ * @str: a pointer to the string to split
+ *
+ * Return: NULL if memory allocation fails or if str is NULL or empty (""),
+ * otherwise return a pointer to the array of words terminated by a NULL
  */
 char **strtow(char *str)
 {
-int i, w, j, k, count, m, wordf;
-char **p;
-char *x;
-w = 0;
-j = 0;
-i = 0;
-count = 0;
-if (*str == '\0' || str == NULL)
+char **words, *pos = str;
+int w = 0, c;
+if (!(str && *str))
 return (NULL);
-for (i = 0; str[i] != '\0'; i++)
-{
-if (str[i] == ' ' && (str[i + 1] != ' ' || str[i + 1] == '\0'))
-w++;
-}
-p = (char **)malloc((w + 1) * sizeof(char *));
-if (p == NULL)
-return (NULL);
-for (wordf = 0; str[wordf] && j <= w; wordf++)
-{
-count = 0;
-if (str[wordf] != ' ')
-{
-for (i = wordf ; str[i] != '\0'; i++)
-{
-if (str[i] == ' ')
+do {
+while (_isspace(*pos))
+++pos;
+if (!*pos)
 break;
-count++;
-}
-*(p + j) = (char *)malloc((count + 1) * sizeof(char));
-if (*(p + j) == NULL)
+while (*(++pos) && !_isspace(*pos))
+;
+} while (++w, *pos);
+if (!w)
+return (NULL);
+words = (char **) malloc(sizeof(char *) * (w + 1));
+if (!words)
+return (NULL);
+w = 0, pos = str;
+do {
+while (_isspace(*pos))
+++pos;
+if (!*pos)
+break;
+for (str = pos++; *pos && !_isspace(*pos); ++pos)
+;
+words[w] = (char *) malloc(sizeof(char) * (pos - str + 1));
+if (!words[w])
 {
-for (k = 0; k <= j; k++)
-{
-x = p[k];
-free(x);
-}
-free(p);
+while (w >  0)
+free(words[--w]);
+free(words);
 return (NULL);
 }
-for (m = 0; wordf < i; wordf++)
-{
-p[j][m] = str[wordf];
-m++;
-}
-p[j][m] = '\0';
-j++;
-}
-}
-p[j] = NULL;
-return (p);
+for (c = 0; str < pos; ++c, ++str)
+words[w][c] = *str;
+words[w][c] = '\0';
+} while (++w, *pos);
+words[w] = NULL;
+return (words);
 }
