@@ -22,10 +22,11 @@ unsigned int i;
 {
 	printf("%d", va_arg(valist, const unsigned int));
 
-	if (i != (n - 1))
+	if (i < (n - 1))
 	printf("%s", separator);
 }
-	printf("\n");
+	
+va_end(valist);
 
-	va_end(valist);
+printf("\n");
 }
