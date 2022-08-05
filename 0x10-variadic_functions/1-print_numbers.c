@@ -8,11 +8,12 @@
  * @n: elements to be printed
  * Return: void
  */
+
 void print_numbers(const char *separator, const unsigned int n, ...)
 {
 va_list valist;
 unsigned int i;
-if (separator ==NULL)
+if (separator == NULL)
 return;
 va_start(valist, n);
 for (i = 0; i < n; i++)
