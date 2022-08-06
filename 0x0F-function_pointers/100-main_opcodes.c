@@ -3,11 +3,11 @@
 #include "function_pointers.h"
 
 /**
- *main - print opcodes of a given machine.
- *@argc: number of arguments.
- *@argv: argument vector.
+ * main - print opcodes of a given machine.
+ * @argc: number of arguments.
+ * @argv: argument vector.
  *
- *Return: 0.
+ * Return: 0.
  */
 int main(int argc, char *argv[])
 {
