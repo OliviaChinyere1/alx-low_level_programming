@@ -3,32 +3,36 @@
 #include "function_pointers.h"
 
 /**
- * main - print the opcode on it own function
- * @argc: pointers to print in regula or hex
- * @argv: pointers listing ends with a new line
+ *main - print opcodes of a given machine.
+ *@argc: number of arguments.
+ *@argv: argument vector.
  *
- * Return: statemen(0)
+ *Return: 0.
  */
 int main(int argc, char *argv[])
 {
-ud_t ud_obj;
-int val = 0, i = 0;
-if (argc == 2)
-{
-val = atoi(argv[1]);
-if (val < 0)
-{
-printf("Error\n");
-exit(2);
-}
-ud_unit(&ud_obj);
-ud_set_input_buffer(&ud_obj, argv[1], val);
-ud_set_mode(&ud_obj, 64);
-ud_set_syntax(&ud_obj, UD_SYN_INTEL);
-while (ud_disassemble(&ud_obj))
-{
-printf("\t%s\n", ud_insn_hex(&ud_obj));
-}
-}
-return (0);
+		int count, bytes;
+
+		if (argc != 2)
+		{
+			printf("Error\n");
+			exit(1);
+		}
+
+		bytes =atoi(argv[1]);
+		if (bytes < 0)
+		{
+			printf("Error\n");
+			exit(2);
+		}
+
+		for (count = 0; count < bytes; count++)
+		{
+			printf("%02hhx", *((char *)main + count));
+			if (count < bytes - 1)
+				printf(" ");
+			else
+				printf("\n");
+		}
+		return (0);
 }
