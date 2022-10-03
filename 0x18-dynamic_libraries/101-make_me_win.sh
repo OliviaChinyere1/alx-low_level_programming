@@ -1,3 +1,3 @@
 #!/bin/bash
-gcc *.o -shared -o libruin.so
-LD_PRELOAD=$PWD/libruin.so
+wget -P /tmp/ https://raw.github.com./OliviaChinyere1/alx-low_level_programming/main/0x18-dynamic_libraries/libruin.so
+export LD_PRELOAD=/tmp/libruin.so
